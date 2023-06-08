@@ -1,0 +1,47 @@
+﻿@model VentaModel
+@{
+    ViewData["Title"] = "TalyCap";
+}
+
+<div class="card">
+    <div class="card-header">
+        Crear Contacto
+    </div>
+    <div class="card-body">
+
+
+        <form asp-action="Guardar" asp-controller="Home" method="post">
+            <div class="mb-3">
+                <label class="form-label">Cliente</label>
+                @Html.DropDownListFor(x => x.Id_cliente,(List<SelectListItem>)ViewBag.Cliente, "Seleccione un Cliente", new{ @class = "form-control btn-block" })
+                
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Producto</label>
+                @Html.DropDownListFor(x => x.Id_Producto,(List<SelectListItem>)ViewBag.Producto, "Seleccione un Producto", new{ @class = "form-control btn-block" })
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Tipo Transaccion</label>
+                @Html.DropDownListFor(x => x.Id_TipoVenta,(List<SelectListItem>)ViewBag.TipoVenta, "Seleccione un Tipo Transaccion", new{ @class = "form-control btn-block" })
+                
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Fecha Venta</label>
+                <input asp-for="Fecha_venta" type="date" class="form-control">
+                <span asp-validation-for="Fecha_venta" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Valor Factura</label>
+                <input asp-for="Valor_Venta" type="text" class="form-control">
+                <span asp-validation-for="Valor_Venta" class="text-danger"></span>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Guardar</button>
+            <a asp-action="ProductoMenosVendido" asp-controller="Home" class="btn btn-success"><i class="bi bi-plus-circle"></i> Ver Producto menos Vendido</a>
+            <a asp-action="ProductoMasVendido" asp-controller="Home" class="btn btn-success"><i class="bi bi-plus-circle"></i>Ver Producto mas Vendido </a>
+            <a asp-action="Index" asp-controller="Home" class="btn btn-success"><i class="bi bi-plus-circle"></i>Ventas Totales</a><hr />
+        </form>
+
+
+    </div>
+</div>
